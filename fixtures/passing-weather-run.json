@@ -1,0 +1,16 @@
+{
+  "request": "Do I need an umbrella in Boston this afternoon?",
+  "finalAnswer": "Yes. Rain is likely after 2 PM, so take an umbrella.",
+  "evidence": [
+    "Boston forecast: 80% chance of rain after 2 PM, with light showers through early evening."
+  ],
+  "toolCalls": [
+    {
+      "name": "get_weather_forecast",
+      "input": {
+        "location": "Boston, MA",
+        "date": "today"
+      }
+    }
+  ]
+}

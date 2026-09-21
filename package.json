@@ -1,0 +1,25 @@
+{
+  "name": "jev-agent-eval-example",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A runnable decision-first agent evaluation example using Jev and TypeSafe AI.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "eval": "node --import tsx src/cli.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test test/*.test.ts",
+    "check": "npm run typecheck && npm test"
+  },
+  "dependencies": {
+    "@typesafe-ai/sdk": "^0.6.0",
+    "dotenv": "^17.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}
