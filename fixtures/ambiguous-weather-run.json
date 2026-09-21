@@ -1,0 +1,16 @@
+{
+  "request": "Do I need an umbrella in Boston this afternoon?",
+  "finalAnswer": "The forecast is mixed: showers are possible, but it may stay dry.",
+  "evidence": [
+    "Boston forecast models disagree: one predicts a 35% chance of scattered showers and another predicts 55%, with uncertain timing."
+  ],
+  "toolCalls": [
+    {
+      "name": "get_weather_forecast",
+      "input": {
+        "location": "Boston, MA",
+        "date": "today"
+      }
+    }
+  ]
+}

@@ -4,12 +4,19 @@ import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
 import { evaluateRun } from "./evaluate.js";
-import type { AgentRun } from "./types.js";
+import { parseAgentRun } from "./parse.js";
 
 const fixturePath = process.argv[2] ?? "fixtures/passing-weather-run.json";
-const run = JSON.parse(
-  await readFile(resolve(fixturePath), "utf8"),
-) as AgentRun;
+const fixtureContents = await readFile(resolve(fixturePath), "utf8");
 
+let parsed: unknown;
+try {
+  parsed = JSON.parse(fixtureContents);
+} catch (error) {
+  const detail = error instanceof Error ? error.message : String(error);
+  throw new Error(`Invalid JSON in ${fixturePath}: ${detail}`, { cause: error });
+}
+
+const run = parseAgentRun(parsed);
 const result = await evaluateRun(run);
 console.log(JSON.stringify(result, null, 2));

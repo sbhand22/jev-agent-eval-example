@@ -43,7 +43,7 @@ describe("evaluation policy", () => {
     assert.equal(verdict.decision, "fail");
   });
 
-  it("uses deterministic checks before semantic judgments", () => {
+  it("fails when exact required data is missing", () => {
     const verdict = applyPolicy(
       { ...run, evidence: [] },
       passingSignals,

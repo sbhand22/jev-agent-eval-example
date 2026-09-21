@@ -16,12 +16,26 @@ export type AgentRun = {
   }>;
 };
 
+export type ToolUse = "appropriate" | "wasteful" | "incorrect";
+export type UsefulnessLevel = "0" | "1" | "2";
+
 export type EvaluationSignals = {
   groundedProbability: number;
-  toolUse: "appropriate" | "wasteful" | "incorrect";
+  toolUse: ToolUse;
   toolUseConfidence: number;
   usefulnessScore: number;
   usefulnessConfidence: number;
+};
+
+export type JevEvaluationSignals = EvaluationSignals & {
+  toolUseProbabilities: Record<ToolUse, number>;
+  usefulnessProbabilities: Record<UsefulnessLevel, number>;
+  usefulnessLegend: Record<UsefulnessLevel, string>;
+};
+
+export type EvaluationUsage = {
+  input_tokens: number;
+  output_tokens: number;
 };
 
 export type Verdict = {
